@@ -15,7 +15,7 @@ Virtual Academy Project
 [Here](https://github.com/bbatsov/ruby-style-guide) is the good stuff.
 
 ## Behaviour-Driven Development
-![BDD](http://www.agilebuddha.com/wp-content/uploads/2013/08/Behavior-Driven-DevelopmentBDD-2.png)
+![BDD](http://www.agilebuddha.com/wp-content/uploads/2013/08/Behavior-Driven-DevelopmentBDD-2.png)  
 * 1. Write test. Run test. It fail. (RED)
 * 2. Write code. Run test. It`s OK. (YELLOW)
 * 3. Refactor code. (GREEN)
