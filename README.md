@@ -10,6 +10,20 @@ Virtual Academy Project
 * Moar
 
 ## Local installation:
+* Get this repo
+* Install Ruby, PostgreSQL
+* Install dependencies:
+  ```
+  bundle install
+  ```
+* Prepare database:  
+  ```
+  rake db:create && rake db:migrate
+  ```
+* Have fun!
+  ```
+  puma
+  ```
 
 ## Code convention:
 [Here](https://github.com/bbatsov/ruby-style-guide) is the good stuff.
