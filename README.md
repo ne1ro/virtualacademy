@@ -16,9 +16,6 @@ Virtual Academy Project
 
 ## Behaviour-Driven Development
 ![BDD](http://www.agilebuddha.com/wp-content/uploads/2013/08/Behavior-Driven-DevelopmentBDD-2.png)  
-* Write test. Run test. It fail. (RED)
-* Write code. Run test. OK. (YELLOW)
-* Refactor code. (GREEN)
 
 ## REST API:
 Will be soon ...
