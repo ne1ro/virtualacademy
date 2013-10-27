@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131027110505) do
+ActiveRecord::Schema.define(version: 20131027111312) do
+
+  create_table "lessons", force: true do |t|
+    t.string   "title",       null: false
+    t.string   "description"
+    t.text     "body",        null: false
+    t.integer  "number"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lessons", ["course_id"], name: "index_lessons_on_course_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "title",                      null: false
@@ -20,6 +32,18 @@ ActiveRecord::Schema.define(version: 20131027110505) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "reviews", force: true do |t|
+    t.string   "text",       null: false
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.integer  "rate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["course_id"], name: "index_reviews_on_course_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "tasks", force: true do |t|
     t.string  "title",     null: false
