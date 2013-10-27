@@ -17,5 +17,5 @@ rerun.txt
 pickle-email-*.html
 .project
 *.swp
-test/*
+test/
 config/database.yml

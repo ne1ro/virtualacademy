@@ -27,7 +27,7 @@ Virtual Academy Project
   ```
 * Have fun!
   ```
-  puma
+  rails S puma
   ```
 
 ## Code convention:

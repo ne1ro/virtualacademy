@@ -15,15 +15,6 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -32,14 +23,61 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# Use puma as the app server
+gem 'puma'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# REST API versioning
+# gem 'versionist'
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
+# OmniAuth
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-vkontakte'
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+# Redis storage
+gem 'redis-store'
+
+# Tags for blog records
+gem 'acts-as-taggable-on'
+
+group :development do
+  gem 'guard-livereload'
+  gem 'rb-inotify'
+  gem 'awesome_print'
+  gem 'colored'
+end
+
+# Use Angular.JS client framework
+gem 'angularjs-rails'
+
+# Use SLIM template engine
+gem 'slim-rails'
+
+# Markdown
+gem 'redcarpet'
+
+# Realtime websockets
+gem 'faye'
+
+# Awesome icons
+gem 'font-awesome-rails'
+
+# Authentication
+gem 'devise'
+
+# Image upload
+gem 'carrierwave'
+
+# ImageMagick
+gem 'mini_magick'
+
+# Testing
+gem 'rspec-rails', group: [:development, :test]
+group :test do
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'guard-rspec'
+end
