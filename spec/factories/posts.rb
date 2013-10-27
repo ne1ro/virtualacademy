@@ -1,9 +1,9 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :post do
-    title "MyString"
-    body "MyText"
-    published false
+    title { Faker::Lorem.sentence }
+    body {Faker::Lorem.paragraph }
+    published true
   end
 end

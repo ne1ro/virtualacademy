@@ -75,10 +75,13 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 # Testing
-gem 'rspec-rails', group: [:development, :test]
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
 group :test do
   gem 'capybara'
-  gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'guard-rspec'
   gem 'faker'
