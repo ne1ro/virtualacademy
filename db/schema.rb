@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131027105954) do
+ActiveRecord::Schema.define(version: 20131027110505) do
+
+  create_table "posts", force: true do |t|
+    t.string   "title",                      null: false
+    t.text     "body",                       null: false
+    t.boolean  "published",  default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tasks", force: true do |t|
     t.string  "title",     null: false
