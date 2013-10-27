@@ -12,6 +12,11 @@ Virtual Academy Project
 ## Local installation:
 * Get this repo
 * Install Ruby, PostgreSQL
+* Copy config file:  
+  ```
+  cp config/database.yml.example config/database.yml
+  ```  
+  and change settings
 * Install dependencies:
   ```
   bundle install
