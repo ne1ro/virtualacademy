@@ -44,6 +44,7 @@ gem 'acts-as-taggable-on'
 
 group :development do
   gem 'guard-livereload'
+  gem 'capistrano'
   gem 'rb-inotify'
   gem 'awesome_print'
   gem 'colored'
@@ -80,4 +81,6 @@ group :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'guard-rspec'
+  gem 'faker'
+  gem 'launchy'
 end
