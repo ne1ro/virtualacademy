@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -27,7 +27,7 @@ end
 gem 'puma'
 
 # REST API versioning
-# gem 'versionist'
+gem 'versionist'
 
 # OmniAuth
 gem 'omniauth-facebook'
@@ -50,9 +50,6 @@ group :development do
   gem 'colored'
 end
 
-# Use Angular.JS client framework
-gem 'angularjs-rails'
-
 # Use SLIM template engine
 gem 'slim-rails'
 
@@ -73,6 +70,12 @@ gem 'carrierwave'
 
 # ImageMagick
 gem 'mini_magick'
+
+# Static pages
+gem 'high_voltage'
+
+# Vendor packages
+gem 'bower-rails'
 
 # Testing
 group :development, :test do
