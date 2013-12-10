@@ -1,10 +1,10 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :review do
-    text "MyString"
+    text {Faker::Lorem.sentence}
     user nil
     course nil
-    rate 1
+    rate {Random.rand(10) + 1}
   end
 end
