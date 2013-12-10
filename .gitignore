@@ -22,3 +22,4 @@ test/
 config/database.yml
 custom_plan.rb
 zeus.json
+Guardfile
