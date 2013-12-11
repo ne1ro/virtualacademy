@@ -40,24 +40,19 @@ describe User do
   context '#location' do
     it 'should have valid format' do
       FactoryGirl.build(:user, location: 'USA#Florida Vice-City!').should_not be_valid
-      FactoryGirl.build(:user, location: 'USA, Florida, Vice-City').should be_valid
+      FactoryGirl.build(:user, location: 'USA,Florida,Vice-City').should be_valid
     end
 
     it 'should have at least two words' do
       FactoryGirl.build(:user, location: 'USA,').should_not be_valid
       FactoryGirl.build(:user, location: 'USA, Florida').should be_valid
     end
-
-    it 'should have valid length' do
-      FactoryGirl.build(:user, location: 'a, b').should_not be_valid
-      FactoryGirl.build(:user, location: long_string).should_not be_valid
-    end
   end
 
   context '#about' do
     it 'should have valid length' do
       FactoryGirl.build(:user, about: long_string).should_not be_valid
-      FactoryGirl.build(:user, about: long_string[0..1000]).should be_valid
+      FactoryGirl.build(:user, about: 'Sample Text').should be_valid
     end
   end
   
@@ -66,7 +61,7 @@ describe User do
       FactoryGirl.build(:user, money: nil).should_not be_valid
     end
 
-    it 'is invalid without' do
+    it 'should be greather than 0 or equal' do
       FactoryGirl.build(:user, money: -10).should_not be_valid
     end
   end
@@ -84,13 +79,6 @@ describe User do
     it 'should not have special symbols' do
       FactoryGirl.build(:user, fullname: 'Vasya#12 Lolov123').should_not be_valid
       FactoryGirl.build(:user, fullname: 'Вася Лолов').should be_valid
-    end
-
-    it 'should have valid length' do
-      FactoryGirl.build(:user, fullname: 'A B').should_not be_valid
-      FactoryGirl.build(:user, fullname: 'Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh \
-      Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh \
-      Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh ').should_not be_valid
     end
   end
 
