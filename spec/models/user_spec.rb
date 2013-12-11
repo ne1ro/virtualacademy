@@ -34,4 +34,16 @@ describe User do
       user2.should have(1).error_on :nickname
     end
   end
+
+  context '#location' do
+    it 'should have valid format' do
+      FactoryGirl.build(:user, location: 'USA#Florida Vice-City!').should_not be_valid
+      FactoryGirl.build(:user, location: 'USA, Florida, Vice-City').should be_valid
+    end
+
+    it 'should have at least two words' do
+      FactoryGirl.build(:user, location: 'USA,').should_not be_valid
+      FactoryGirl.build(:user, location: 'USA, Florida').should be_valid
+    end
+  end
 end
