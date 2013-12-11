@@ -8,5 +8,7 @@ FactoryGirl.define do
     about { Faker::Lorem.sentence + Faker::Lorem.sentence }
     nickname { Faker::Internet.slug }
     location { Faker::Address.state }
+    password "Ghj10293_lkj_"
+    password_confirmation { "Ghj10293_lkj_" }
   end
 end
