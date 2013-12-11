@@ -8,7 +8,7 @@ describe User do
   end
 
   context '#nickname' do
-    it 'is invalid without' do
+    it 'should be exist' do
       FactoryGirl.build(:user, nickname: nil).should_not be_valid
     end
 
@@ -62,17 +62,17 @@ describe User do
   end
   
   context '#money' do
-    it 'is invalid wihout' do
+    it 'is invalid without' do
       FactoryGirl.build(:user, money: nil).should_not be_valid
     end
 
-    it 'should be more than zero' do
+    it 'is invalid without' do
       FactoryGirl.build(:user, money: -10).should_not be_valid
     end
   end
   
   context '#fullname' do
-    it 'is invalid without' do
+    it 'should be exist' do
       FactoryGirl.build(:user, fullname: nil).should_not be_valid
     end
 
@@ -85,6 +85,37 @@ describe User do
       FactoryGirl.build(:user, fullname: 'Vasya#12 Lolov123').should_not be_valid
       FactoryGirl.build(:user, fullname: 'Вася Лолов').should be_valid
     end
+
+    it 'should have valid length' do
+      FactoryGirl.build(:user, fullname: 'A B').should_not be_valid
+      FactoryGirl.build(:user, fullname: 'Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh \
+      Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh \
+      Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh Acdefghijklmn Oprstfgghkkjh ').should_not be_valid
+    end
   end
 
+  context '#email' do
+    it 'should be exist' do
+      FactoryGirl.build(:user, email: nil).should_not be_valid
+    end
+
+    it 'should have valid format' do
+      FactoryGirl.build(:user, email: 'random').should_not be_valid
+      FactoryGirl.build(:user, email: 'random@example').should_not be_valid
+      FactoryGirl.build(:user, email: 'random@example.com').should_not be_valid
+    end
+  end
+
+  context '#password' do
+    it 'should be exists' do
+      FactoryGirl.build(:user, password: nil).should_not be_valid
+    end
+
+    it 'should have letters, capital letters, numbers and have 8 chars' do
+      FactoryGirl.build(:user, password: 'Rand0m').should_not be_valid
+      FactoryGirl.build(:user, password: 'Randoooom').should_not be_valid
+      FactoryGirl.build(:user, password: 'rand00000m').should_not be_valid
+      FactoryGirl.build(:user, password: 'Rand0mizer').should_not be_valid
+    end
+  end
 end
