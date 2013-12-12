@@ -1,11 +1,10 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
+require 'faker'
 FactoryGirl.define do
   factory :course do
-    title "MyString"
-    description "MyString"
-    cost 1.5
-    body "MyText"
+    title {Faker::Lorem.sentence}
+    description {Faker::Lorem.paragraph}
+    cost {(Random.rand(100)+1).fdiv 10}
+    body {Faker::Lorem.paragraph}
     user nil
   end
 end
