@@ -1,10 +1,9 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
+require 'faker'
 FactoryGirl.define do
   factory :lesson do
-    title "MyString"
-    description "MyString"
-    body "MyText"
+    title { Faker::Lorem.sentence }
+    description { Faker::Lorem.paragraph }
+    body { Faker::Lorem.paragraph }
     number 1
     course nil
   end
