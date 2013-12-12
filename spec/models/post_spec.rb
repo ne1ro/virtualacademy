@@ -6,7 +6,7 @@ describe Post do
   end
 
   context '#title' do
-    it 'is invalid without' do
+    it 'should be exist' do
       FactoryGirl.build(:post, title: nil).should_not be_valid
     end
 
