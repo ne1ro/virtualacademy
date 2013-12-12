@@ -1,5 +1,4 @@
 require 'faker'
-
 FactoryGirl.define do
   factory :review do
     text {Faker::Lorem.sentence}
