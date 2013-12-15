@@ -19,6 +19,7 @@ Virtualacademy::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
+  resources :posts
   # Example resource route with options:
   #   resources :products do
   #     member do
@@ -30,6 +31,13 @@ Virtualacademy::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
+  
+  resources :users do
+    resources :reviews
+    resources :courses
+    resources :lessons
+    resources :tasks
+  end
 
   # Example resource route with sub-resources:
   #   resources :products do
