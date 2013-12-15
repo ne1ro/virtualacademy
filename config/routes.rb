@@ -1,28 +1,4 @@
 Virtualacademy::Application.routes.draw do
-  get "courses/index"
-  get "courses/show"
-  get "courses/create"
-  get "courses/update"
-  get "courses/destroy"
-  get "lessons/index"
-  get "lessons/show"
-  get "lessons/create"
-  get "lessons/update"
-  get "lessons/destroy"
-  get "posts/index"
-  get "posts/show"
-  get "posts/create"
-  get "posts/update"
-  get "posts/destroy"
-  get "tasks/index"
-  get "tasks/show"
-  get "tasks/create"
-  get "tasks/update"
-  get "tasks/destroy"
-  get "reviews/index"
-  get "reviews/create"
-  get "reviews/update"
-  get "reviews/destroy"
   devise_for :users
   
   get 'index' => 'high_voltage/pages#show', id: 'index'
