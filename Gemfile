@@ -12,9 +12,6 @@ gem 'sass-rails', '~> 4.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -27,12 +24,11 @@ end
 gem 'puma'
 
 # REST API versioning
-gem 'versionist'
+gem 'versioncake'
 
 # OmniAuth
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
-gem 'omniauth-linkedin'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-vkontakte'
 
@@ -51,17 +47,8 @@ group :development do
   gem 'colored'
 end
 
-# Use SLIM template engine
-gem 'slim-rails'
-
-# Markdown
-gem 'redcarpet'
-
 # Realtime websockets
 gem 'faye'
-
-# Awesome icons
-gem 'font-awesome-rails'
 
 # Authentication
 gem 'devise'
@@ -71,12 +58,6 @@ gem 'carrierwave'
 
 # ImageMagick
 gem 'mini_magick'
-
-# Static pages
-gem 'high_voltage'
-
-# Vendor packages
-gem 'bower-rails'
 
 # Testing
 group :development, :test do
