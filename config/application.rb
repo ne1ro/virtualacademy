@@ -32,7 +32,7 @@ module Virtualacademy
     config.i18n.default_locale = :ru
 
     # Configure VersionCake
-    config.view_versions = (1...1)
+    config.view_versions = [1]
     config.view_version_extraction_strategy = :query_parameter
   end
 end
