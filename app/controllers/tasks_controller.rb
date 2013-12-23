@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.save task_params
+    @task = Task.create task_params
   end
 
   def update
