@@ -32,7 +32,7 @@ Virtualacademy::Application.routes.draw do
   #     end
   #   end
   
-  resources :users do
+  devise_scope :user do
     resources :reviews
     resources :courses
     resources :lessons
