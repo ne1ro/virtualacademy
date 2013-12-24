@@ -1,9 +1,5 @@
 Virtualacademy::Application.routes.draw do
   devise_for :users
-  
-  get 'index' => 'high_voltage/pages#show', id: 'index'
-
-  root to: 'high_voltage/pages#show', id: 'gap'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
