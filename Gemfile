@@ -44,6 +44,9 @@ end
 # Realtime websockets
 gem 'faye'
 
+# Curl bindings
+gem 'curb'
+
 # Authentication
 gem 'devise'
 
