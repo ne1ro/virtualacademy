@@ -1,5 +1,5 @@
 require File.expand_path('../boot', __FILE__)
-
+require 'multi_json'
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -34,5 +34,8 @@ module Virtualacademy
     # Configure VersionCake
     config.view_versions = [1]
     config.view_version_extraction_strategy = :query_parameter
+
+    # MultiJSON engine
+    MultiJson.use :yajl
   end
 end

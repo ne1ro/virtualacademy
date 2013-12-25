@@ -16,6 +16,11 @@ Virtualacademy::Application.routes.draw do
   #   resources :products
 
   resources :posts
+  resources :reviews
+  resources :courses
+  resources :lessons
+  resources :tasks
+
   # Example resource route with options:
   #   resources :products do
   #     member do
@@ -28,13 +33,6 @@ Virtualacademy::Application.routes.draw do
   #     end
   #   end
   
-  devise_scope :user do
-    resources :reviews
-    resources :courses
-    resources :lessons
-    resources :tasks
-  end
-
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

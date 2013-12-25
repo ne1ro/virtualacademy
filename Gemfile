@@ -41,6 +41,9 @@ group :development do
   gem 'colored'
 end
 
+# JSON engine
+gem 'yajl-ruby'
+
 # Realtime websockets
 gem 'faye'
 
