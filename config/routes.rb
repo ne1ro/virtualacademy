@@ -1,5 +1,6 @@
 Virtualacademy::Application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'registrations', sessions: 'users'}
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -16,10 +17,6 @@ Virtualacademy::Application.routes.draw do
   #   resources :products
 
   resources :posts
-  resources :reviews
-  resources :courses
-  resources :lessons
-  resources :tasks
 
   # Example resource route with options:
   #   resources :products do
@@ -33,6 +30,15 @@ Virtualacademy::Application.routes.draw do
   #     end
   #   end
   
+  devise_scope :user do
+    resources :users, only: [:show, :index] do
+      resources :reviews
+      resources :courses
+      resources :lessons
+      resources :tasks
+    end
+  end
+
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales
