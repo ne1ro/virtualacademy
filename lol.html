@@ -1,8 +1,8 @@
 HTTP/1.1 500 Internal Server Error
 Content-Type: text/html; charset=utf-8
-X-Request-Id: b5be8c5a-09fc-4d49-90c4-6fd7c440527b
-X-Runtime: 0.110168
-Content-Length: 23505
+X-Request-Id: dec7d417-11bd-41af-9a66-5852f825934b
+X-Runtime: 0.131431
+Content-Length: 16366
 
 <!DOCTYPE html>
 <html lang="en">
@@ -156,40 +156,39 @@ Content-Length: 23505
 
 <header>
   <h1>
-    ActiveRecord::StatementInvalid
-      in RegistrationsController#create
+    NameError
+      in UsersController#create
   </h1>
 </header>
 
 <div id="container">
-  <h2>PG::NotNullViolation: ERROR:  null value in column &quot;fullname&quot; violates not-null constraint
-: INSERT INTO &quot;users&quot; (&quot;created_at&quot;, &quot;email&quot;, &quot;encrypted_password&quot;, &quot;updated_at&quot;) VALUES ($1, $2, $3, $4) RETURNING &quot;id&quot;</h2>
+  <h2>undefined local variable or method `resource_class&#39; for #&lt;UsersController:0x007f09907abed0&gt;</h2>
 
   <div class="source">
 <div class="info">
-  Extracted source (around line <strong>#4</strong>):
+  Extracted source (around line <strong>#3</strong>):
 </div>
 <div class="data">
   <table cellpadding="0" cellspacing="0" class="lines">
       <tr>
         <td>
           <pre class="line_numbers">
+<span>1</span>
 <span>2</span>
 <span>3</span>
 <span>4</span>
 <span>5</span>
 <span>6</span>
-<span>7</span>
           </pre>
         </td>
 <td width="100%">
 <pre>
-<div class="line">  def create
-</div><div class="line">    user = build_resource(sign_up_params)
-</div><div class="line active">    if user.save
-</div><div class="line">      if user.active_for_authentication?
-</div><div class="line">        sign_up(&#39;user&#39;, user)
-</div><div class="line">        respond_to do |format|
+<div class="line">class UsersController &lt; ApplicationController
+</div><div class="line">  def create
+</div><div class="line active">    self.resource = resource_class.new(sign_in_params)
+</div><div class="line">    resource = User.find_for_database_authentication(nickname: params[:user][:nickname])
+</div><div class="line">    resource[:remember_me] = params[:user][:remember_me]
+</div><div class="line">    return invalid_login_attempt unless resource
 </div>
 </pre>
 </td>
@@ -207,50 +206,14 @@ Content-Length: 23505
     <a href="#" onclick="hide(&#39;Application-Trace&#39;);hide(&#39;Framework-Trace&#39;);show(&#39;Full-Trace&#39;);; return false;">Full Trace</a> 
 
     <div id="Application-Trace" style="display: block;">
-      <pre><code>app/controllers/registrations_controller.rb:4:in `create&#39;</code></pre>
+      <pre><code>app/controllers/users_controller.rb:3:in `create&#39;</code></pre>
     </div>
     <div id="Framework-Trace" style="display: none;">
-      <pre><code>activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:786:in `get_last_result&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:786:in `exec_cache&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/postgresql/database_statements.rb:139:in `block in exec_query&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract_adapter.rb:435:in `block in log&#39;
-activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract_adapter.rb:430:in `log&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/postgresql/database_statements.rb:137:in `exec_query&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/postgresql/database_statements.rb:184:in `exec_insert&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `insert&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `insert&#39;
-activerecord (4.0.2) lib/active_record/relation.rb:76:in `insert&#39;
-activerecord (4.0.2) lib/active_record/persistence.rb:509:in `create_record&#39;
-activerecord (4.0.2) lib/active_record/attribute_methods/dirty.rb:78:in `create_record&#39;
-activerecord (4.0.2) lib/active_record/callbacks.rb:306:in `block in create_record&#39;
-activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__501540576332253016__create__callbacks&#39;
-activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
-activerecord (4.0.2) lib/active_record/callbacks.rb:306:in `create_record&#39;
-activerecord (4.0.2) lib/active_record/timestamp.rb:57:in `create_record&#39;
-activerecord (4.0.2) lib/active_record/persistence.rb:477:in `create_or_update&#39;
-activerecord (4.0.2) lib/active_record/callbacks.rb:302:in `block in create_or_update&#39;
-activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__501540576332253016__save__callbacks&#39;
-activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
-activerecord (4.0.2) lib/active_record/callbacks.rb:302:in `create_or_update&#39;
-activerecord (4.0.2) lib/active_record/persistence.rb:106:in `save&#39;
-activerecord (4.0.2) lib/active_record/validations.rb:51:in `save&#39;
-activerecord (4.0.2) lib/active_record/attribute_methods/dirty.rb:32:in `save&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:270:in `block (2 levels) in save&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:326:in `block in with_transaction_returning_status&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:202:in `block in transaction&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:210:in `within_new_transaction&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:202:in `transaction&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:209:in `transaction&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:323:in `with_transaction_returning_status&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:270:in `block in save&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:281:in `rollback_active_record_state!&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:269:in `save&#39;
-actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:4:in `send_action&#39;
+      <pre><code>actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:4:in `send_action&#39;
 actionpack (4.0.2) lib/abstract_controller/base.rb:189:in `process_action&#39;
 actionpack (4.0.2) lib/action_controller/metal/rendering.rb:10:in `process_action&#39;
 actionpack (4.0.2) lib/abstract_controller/callbacks.rb:18:in `block in process_action&#39;
-activesupport (4.0.2) lib/active_support/callbacks.rb:413:in `_run__168220797873859269__process_action__callbacks&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:393:in `_run__3003475540373726848__process_action__callbacks&#39;
 activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
 actionpack (4.0.2) lib/abstract_controller/callbacks.rb:17:in `process_action&#39;
 actionpack (4.0.2) lib/action_controller/metal/rescue.rb:29:in `process_action&#39;
@@ -289,7 +252,7 @@ activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call&#39;
 activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call&#39;
 activerecord (4.0.2) lib/active_record/migration.rb:369:in `call&#39;
 actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call&#39;
-activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__669883469105723817__call__callbacks&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__2524084044420276846__call__callbacks&#39;
 activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
 actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call&#39;
 actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call&#39;
@@ -319,48 +282,12 @@ puma (2.7.1) lib/puma/thread_pool.rb:92:in `call&#39;
 puma (2.7.1) lib/puma/thread_pool.rb:92:in `block in spawn_thread&#39;</code></pre>
     </div>
     <div id="Full-Trace" style="display: none;">
-      <pre><code>activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:786:in `get_last_result&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:786:in `exec_cache&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/postgresql/database_statements.rb:139:in `block in exec_query&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract_adapter.rb:435:in `block in log&#39;
-activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract_adapter.rb:430:in `log&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/postgresql/database_statements.rb:137:in `exec_query&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/postgresql/database_statements.rb:184:in `exec_insert&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `insert&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `insert&#39;
-activerecord (4.0.2) lib/active_record/relation.rb:76:in `insert&#39;
-activerecord (4.0.2) lib/active_record/persistence.rb:509:in `create_record&#39;
-activerecord (4.0.2) lib/active_record/attribute_methods/dirty.rb:78:in `create_record&#39;
-activerecord (4.0.2) lib/active_record/callbacks.rb:306:in `block in create_record&#39;
-activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__501540576332253016__create__callbacks&#39;
-activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
-activerecord (4.0.2) lib/active_record/callbacks.rb:306:in `create_record&#39;
-activerecord (4.0.2) lib/active_record/timestamp.rb:57:in `create_record&#39;
-activerecord (4.0.2) lib/active_record/persistence.rb:477:in `create_or_update&#39;
-activerecord (4.0.2) lib/active_record/callbacks.rb:302:in `block in create_or_update&#39;
-activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__501540576332253016__save__callbacks&#39;
-activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
-activerecord (4.0.2) lib/active_record/callbacks.rb:302:in `create_or_update&#39;
-activerecord (4.0.2) lib/active_record/persistence.rb:106:in `save&#39;
-activerecord (4.0.2) lib/active_record/validations.rb:51:in `save&#39;
-activerecord (4.0.2) lib/active_record/attribute_methods/dirty.rb:32:in `save&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:270:in `block (2 levels) in save&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:326:in `block in with_transaction_returning_status&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:202:in `block in transaction&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:210:in `within_new_transaction&#39;
-activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:202:in `transaction&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:209:in `transaction&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:323:in `with_transaction_returning_status&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:270:in `block in save&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:281:in `rollback_active_record_state!&#39;
-activerecord (4.0.2) lib/active_record/transactions.rb:269:in `save&#39;
-app/controllers/registrations_controller.rb:4:in `create&#39;
+      <pre><code>app/controllers/users_controller.rb:3:in `create&#39;
 actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:4:in `send_action&#39;
 actionpack (4.0.2) lib/abstract_controller/base.rb:189:in `process_action&#39;
 actionpack (4.0.2) lib/action_controller/metal/rendering.rb:10:in `process_action&#39;
 actionpack (4.0.2) lib/abstract_controller/callbacks.rb:18:in `block in process_action&#39;
-activesupport (4.0.2) lib/active_support/callbacks.rb:413:in `_run__168220797873859269__process_action__callbacks&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:393:in `_run__3003475540373726848__process_action__callbacks&#39;
 activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
 actionpack (4.0.2) lib/abstract_controller/callbacks.rb:17:in `process_action&#39;
 actionpack (4.0.2) lib/action_controller/metal/rescue.rb:29:in `process_action&#39;
@@ -399,7 +326,7 @@ activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call&#39;
 activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call&#39;
 activerecord (4.0.2) lib/active_record/migration.rb:369:in `call&#39;
 actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call&#39;
-activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__669883469105723817__call__callbacks&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__2524084044420276846__call__callbacks&#39;
 activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
 actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call&#39;
 actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call&#39;
@@ -433,11 +360,9 @@ puma (2.7.1) lib/puma/thread_pool.rb:92:in `block in spawn_thread&#39;</code></p
   
 
 <h2 style="margin-top: 30px">Request</h2>
-<p><b>Parameters</b>:</p> <pre>{&quot;user&quot;=&gt;{&quot;email&quot;=&gt;&quot;vasya100500@lol.ru&quot;,
- &quot;password&quot;=&gt;&quot;[FILTERED]&quot;},
- &quot;format&quot;=&gt;&quot;json&quot;,
- &quot;registration&quot;=&gt;{&quot;user&quot;=&gt;{&quot;email&quot;=&gt;&quot;vasya100500@lol.ru&quot;,
- &quot;password&quot;=&gt;&quot;[FILTERED]&quot;}}}</pre>
+<p><b>Parameters</b>:</p> <pre>{&quot;user&quot;=&gt;{&quot;password&quot;=&gt;&quot;[FILTERED]&quot;,
+ &quot;nickname&quot;=&gt;&quot;lolvasya&quot;},
+ &quot;format&quot;=&gt;&quot;json&quot;}</pre>
 
 <div class="details">
   <div class="summary"><a href="#" onclick="return toggleSessionDump()">Toggle session dump</a></div>

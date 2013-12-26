@@ -1,4 +1,7 @@
 Virtualacademy::Application.routes.draw do
+  get "users/create"
+  get "users/show"
+  get "users/index"
   devise_for :users, controllers: {registrations: 'registrations', sessions: 'users'}
 
   # The priority is based upon order of creation: first created -> highest priority.
