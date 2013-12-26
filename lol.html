@@ -1,0 +1,463 @@
+HTTP/1.1 500 Internal Server Error
+Content-Type: text/html; charset=utf-8
+X-Request-Id: b5be8c5a-09fc-4d49-90c4-6fd7c440527b
+X-Runtime: 0.110168
+Content-Length: 23505
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Action Controller: Exception caught</title>
+  <style>
+    body {
+      background-color: #FAFAFA;
+      color: #333;
+      margin: 0px;
+    }
+
+    body, p, ol, ul, td {
+      font-family: helvetica, verdana, arial, sans-serif;
+      font-size:   13px;
+      line-height: 18px;
+    }
+
+    pre {
+      font-size: 11px;
+      white-space: pre-wrap;
+    }
+
+    pre.box {
+      border: 1px solid #EEE;
+      padding: 10px;
+      margin: 0px;
+      width: 958px;
+    }
+
+    header {
+      color: #F0F0F0;
+      background: #C52F24;
+      padding: 0.5em 1.5em;
+    }
+
+    h1 {
+      margin: 0.2em 0;
+      line-height: 1.1em;
+      font-size: 2em;
+    }
+
+    h2 {
+      color: #C52F24;
+      line-height: 25px;
+    }
+
+    .details {
+      border: 1px solid #D0D0D0;
+      border-radius: 4px;
+      margin: 1em 0px;
+      display: block;
+      width: 978px;
+    }
+
+    .summary {
+      padding: 8px 15px;
+      border-bottom: 1px solid #D0D0D0;
+      display: block;
+    }
+
+    .details pre {
+      margin: 5px;
+      border: none;
+    }
+
+    #container {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0 1.5em;
+    }
+
+    .source * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .source {
+      border: 1px solid #D9D9D9;
+      background: #ECECEC;
+      width: 978px;
+    }
+
+    .source pre {
+      padding: 10px 0px;
+      border: none;
+    }
+
+    .source .data {
+      font-size: 80%;
+      overflow: auto;
+      background-color: #FFF;
+    }
+
+    .info {
+      padding: 0.5em;
+    }
+
+    .source .data .line_numbers {
+      background-color: #ECECEC;
+      color: #AAA;
+      padding: 1em .5em;
+      border-right: 1px solid #DDD;
+      text-align: right;
+    }
+
+    .line {
+      padding-left: 10px;
+    }
+
+    .line:hover {
+      background-color: #F6F6F6;
+    }
+
+    .line.active {
+      background-color: #FFCCCC;
+    }
+
+    a { color: #980905; }
+    a:visited { color: #666; }
+    a:hover { color: #C52F24; }
+
+    
+  </style>
+
+  <script>
+    var toggle = function(id) {
+      var s = document.getElementById(id).style;
+      s.display = s.display == 'none' ? 'block' : 'none';
+      return false;
+    }
+    var show = function(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+    var hide = function(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+    var toggleTrace = function() {
+      return toggle('blame_trace');
+    }
+    var toggleSessionDump = function() {
+      return toggle('session_dump');
+    }
+    var toggleEnvDump = function() {
+      return toggle('env_dump');
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <h1>
+    ActiveRecord::StatementInvalid
+      in RegistrationsController#create
+  </h1>
+</header>
+
+<div id="container">
+  <h2>PG::NotNullViolation: ERROR:  null value in column &quot;fullname&quot; violates not-null constraint
+: INSERT INTO &quot;users&quot; (&quot;created_at&quot;, &quot;email&quot;, &quot;encrypted_password&quot;, &quot;updated_at&quot;) VALUES ($1, $2, $3, $4) RETURNING &quot;id&quot;</h2>
+
+  <div class="source">
+<div class="info">
+  Extracted source (around line <strong>#4</strong>):
+</div>
+<div class="data">
+  <table cellpadding="0" cellspacing="0" class="lines">
+      <tr>
+        <td>
+          <pre class="line_numbers">
+<span>2</span>
+<span>3</span>
+<span>4</span>
+<span>5</span>
+<span>6</span>
+<span>7</span>
+          </pre>
+        </td>
+<td width="100%">
+<pre>
+<div class="line">  def create
+</div><div class="line">    user = build_resource(sign_up_params)
+</div><div class="line active">    if user.save
+</div><div class="line">      if user.active_for_authentication?
+</div><div class="line">        sign_up(&#39;user&#39;, user)
+</div><div class="line">        respond_to do |format|
+</div>
+</pre>
+</td>
+    </tr>
+  </table>
+</div>
+</div>
+
+  
+<p><code>Rails.root: /home/neiro/Projects/virtualacademy</code></p>
+
+<div id="traces">
+    <a href="#" onclick="hide(&#39;Framework-Trace&#39;);hide(&#39;Full-Trace&#39;);show(&#39;Application-Trace&#39;);; return false;">Application Trace</a> |
+    <a href="#" onclick="hide(&#39;Application-Trace&#39;);hide(&#39;Full-Trace&#39;);show(&#39;Framework-Trace&#39;);; return false;">Framework Trace</a> |
+    <a href="#" onclick="hide(&#39;Application-Trace&#39;);hide(&#39;Framework-Trace&#39;);show(&#39;Full-Trace&#39;);; return false;">Full Trace</a> 
+
+    <div id="Application-Trace" style="display: block;">
+      <pre><code>app/controllers/registrations_controller.rb:4:in `create&#39;</code></pre>
+    </div>
+    <div id="Framework-Trace" style="display: none;">
+      <pre><code>activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:786:in `get_last_result&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:786:in `exec_cache&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/postgresql/database_statements.rb:139:in `block in exec_query&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract_adapter.rb:435:in `block in log&#39;
+activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract_adapter.rb:430:in `log&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/postgresql/database_statements.rb:137:in `exec_query&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/postgresql/database_statements.rb:184:in `exec_insert&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `insert&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `insert&#39;
+activerecord (4.0.2) lib/active_record/relation.rb:76:in `insert&#39;
+activerecord (4.0.2) lib/active_record/persistence.rb:509:in `create_record&#39;
+activerecord (4.0.2) lib/active_record/attribute_methods/dirty.rb:78:in `create_record&#39;
+activerecord (4.0.2) lib/active_record/callbacks.rb:306:in `block in create_record&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__501540576332253016__create__callbacks&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
+activerecord (4.0.2) lib/active_record/callbacks.rb:306:in `create_record&#39;
+activerecord (4.0.2) lib/active_record/timestamp.rb:57:in `create_record&#39;
+activerecord (4.0.2) lib/active_record/persistence.rb:477:in `create_or_update&#39;
+activerecord (4.0.2) lib/active_record/callbacks.rb:302:in `block in create_or_update&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__501540576332253016__save__callbacks&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
+activerecord (4.0.2) lib/active_record/callbacks.rb:302:in `create_or_update&#39;
+activerecord (4.0.2) lib/active_record/persistence.rb:106:in `save&#39;
+activerecord (4.0.2) lib/active_record/validations.rb:51:in `save&#39;
+activerecord (4.0.2) lib/active_record/attribute_methods/dirty.rb:32:in `save&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:270:in `block (2 levels) in save&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:326:in `block in with_transaction_returning_status&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:202:in `block in transaction&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:210:in `within_new_transaction&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:202:in `transaction&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:209:in `transaction&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:323:in `with_transaction_returning_status&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:270:in `block in save&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:281:in `rollback_active_record_state!&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:269:in `save&#39;
+actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:4:in `send_action&#39;
+actionpack (4.0.2) lib/abstract_controller/base.rb:189:in `process_action&#39;
+actionpack (4.0.2) lib/action_controller/metal/rendering.rb:10:in `process_action&#39;
+actionpack (4.0.2) lib/abstract_controller/callbacks.rb:18:in `block in process_action&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:413:in `_run__168220797873859269__process_action__callbacks&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
+actionpack (4.0.2) lib/abstract_controller/callbacks.rb:17:in `process_action&#39;
+actionpack (4.0.2) lib/action_controller/metal/rescue.rb:29:in `process_action&#39;
+actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action&#39;
+activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument&#39;
+activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument&#39;
+activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument&#39;
+actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action&#39;
+actionpack (4.0.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action&#39;
+activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action&#39;
+actionpack (4.0.2) lib/abstract_controller/base.rb:136:in `process&#39;
+actionpack (4.0.2) lib/abstract_controller/rendering.rb:44:in `process&#39;
+actionpack (4.0.2) lib/action_controller/metal.rb:195:in `dispatch&#39;
+actionpack (4.0.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch&#39;
+actionpack (4.0.2) lib/action_controller/metal.rb:231:in `block in action&#39;
+actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `dispatch&#39;
+actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:48:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/routing/mapper.rb:44:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call&#39;
+actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each&#39;
+actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call&#39;
+warden (1.2.3) lib/warden/manager.rb:35:in `block in call&#39;
+warden (1.2.3) lib/warden/manager.rb:34:in `catch&#39;
+warden (1.2.3) lib/warden/manager.rb:34:in `call&#39;
+rack (1.5.2) lib/rack/etag.rb:23:in `call&#39;
+rack (1.5.2) lib/rack/conditionalget.rb:35:in `call&#39;
+rack (1.5.2) lib/rack/head.rb:11:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call&#39;
+rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context&#39;
+rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call&#39;
+activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call&#39;
+activerecord (4.0.2) lib/active_record/migration.rb:369:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__669883469105723817__call__callbacks&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call&#39;
+railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app&#39;
+railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call&#39;
+activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged&#39;
+activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged&#39;
+activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged&#39;
+railties (4.0.2) lib/rails/rack/logger.rb:20:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call&#39;
+rack (1.5.2) lib/rack/methodoverride.rb:21:in `call&#39;
+rack (1.5.2) lib/rack/runtime.rb:17:in `call&#39;
+activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call&#39;
+rack (1.5.2) lib/rack/lock.rb:17:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call&#39;
+rack (1.5.2) lib/rack/sendfile.rb:112:in `call&#39;
+railties (4.0.2) lib/rails/engine.rb:511:in `call&#39;
+railties (4.0.2) lib/rails/application.rb:97:in `call&#39;
+rack (1.5.2) lib/rack/content_length.rb:14:in `call&#39;
+puma (2.7.1) lib/puma/server.rb:486:in `handle_request&#39;
+puma (2.7.1) lib/puma/server.rb:357:in `process_client&#39;
+puma (2.7.1) lib/puma/server.rb:250:in `block in run&#39;
+puma (2.7.1) lib/puma/thread_pool.rb:92:in `call&#39;
+puma (2.7.1) lib/puma/thread_pool.rb:92:in `block in spawn_thread&#39;</code></pre>
+    </div>
+    <div id="Full-Trace" style="display: none;">
+      <pre><code>activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:786:in `get_last_result&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:786:in `exec_cache&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/postgresql/database_statements.rb:139:in `block in exec_query&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract_adapter.rb:435:in `block in log&#39;
+activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract_adapter.rb:430:in `log&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/postgresql/database_statements.rb:137:in `exec_query&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/postgresql/database_statements.rb:184:in `exec_insert&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:96:in `insert&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `insert&#39;
+activerecord (4.0.2) lib/active_record/relation.rb:76:in `insert&#39;
+activerecord (4.0.2) lib/active_record/persistence.rb:509:in `create_record&#39;
+activerecord (4.0.2) lib/active_record/attribute_methods/dirty.rb:78:in `create_record&#39;
+activerecord (4.0.2) lib/active_record/callbacks.rb:306:in `block in create_record&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__501540576332253016__create__callbacks&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
+activerecord (4.0.2) lib/active_record/callbacks.rb:306:in `create_record&#39;
+activerecord (4.0.2) lib/active_record/timestamp.rb:57:in `create_record&#39;
+activerecord (4.0.2) lib/active_record/persistence.rb:477:in `create_or_update&#39;
+activerecord (4.0.2) lib/active_record/callbacks.rb:302:in `block in create_or_update&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__501540576332253016__save__callbacks&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
+activerecord (4.0.2) lib/active_record/callbacks.rb:302:in `create_or_update&#39;
+activerecord (4.0.2) lib/active_record/persistence.rb:106:in `save&#39;
+activerecord (4.0.2) lib/active_record/validations.rb:51:in `save&#39;
+activerecord (4.0.2) lib/active_record/attribute_methods/dirty.rb:32:in `save&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:270:in `block (2 levels) in save&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:326:in `block in with_transaction_returning_status&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:202:in `block in transaction&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:210:in `within_new_transaction&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract/database_statements.rb:202:in `transaction&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:209:in `transaction&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:323:in `with_transaction_returning_status&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:270:in `block in save&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:281:in `rollback_active_record_state!&#39;
+activerecord (4.0.2) lib/active_record/transactions.rb:269:in `save&#39;
+app/controllers/registrations_controller.rb:4:in `create&#39;
+actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:4:in `send_action&#39;
+actionpack (4.0.2) lib/abstract_controller/base.rb:189:in `process_action&#39;
+actionpack (4.0.2) lib/action_controller/metal/rendering.rb:10:in `process_action&#39;
+actionpack (4.0.2) lib/abstract_controller/callbacks.rb:18:in `block in process_action&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:413:in `_run__168220797873859269__process_action__callbacks&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
+actionpack (4.0.2) lib/abstract_controller/callbacks.rb:17:in `process_action&#39;
+actionpack (4.0.2) lib/action_controller/metal/rescue.rb:29:in `process_action&#39;
+actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action&#39;
+activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument&#39;
+activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument&#39;
+activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument&#39;
+actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action&#39;
+actionpack (4.0.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action&#39;
+activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action&#39;
+actionpack (4.0.2) lib/abstract_controller/base.rb:136:in `process&#39;
+actionpack (4.0.2) lib/abstract_controller/rendering.rb:44:in `process&#39;
+actionpack (4.0.2) lib/action_controller/metal.rb:195:in `dispatch&#39;
+actionpack (4.0.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch&#39;
+actionpack (4.0.2) lib/action_controller/metal.rb:231:in `block in action&#39;
+actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `dispatch&#39;
+actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:48:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/routing/mapper.rb:44:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call&#39;
+actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each&#39;
+actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call&#39;
+warden (1.2.3) lib/warden/manager.rb:35:in `block in call&#39;
+warden (1.2.3) lib/warden/manager.rb:34:in `catch&#39;
+warden (1.2.3) lib/warden/manager.rb:34:in `call&#39;
+rack (1.5.2) lib/rack/etag.rb:23:in `call&#39;
+rack (1.5.2) lib/rack/conditionalget.rb:35:in `call&#39;
+rack (1.5.2) lib/rack/head.rb:11:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call&#39;
+rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context&#39;
+rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call&#39;
+activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call&#39;
+activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call&#39;
+activerecord (4.0.2) lib/active_record/migration.rb:369:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__669883469105723817__call__callbacks&#39;
+activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call&#39;
+railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app&#39;
+railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call&#39;
+activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged&#39;
+activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged&#39;
+activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged&#39;
+railties (4.0.2) lib/rails/rack/logger.rb:20:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call&#39;
+rack (1.5.2) lib/rack/methodoverride.rb:21:in `call&#39;
+rack (1.5.2) lib/rack/runtime.rb:17:in `call&#39;
+activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call&#39;
+rack (1.5.2) lib/rack/lock.rb:17:in `call&#39;
+actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call&#39;
+rack (1.5.2) lib/rack/sendfile.rb:112:in `call&#39;
+railties (4.0.2) lib/rails/engine.rb:511:in `call&#39;
+railties (4.0.2) lib/rails/application.rb:97:in `call&#39;
+rack (1.5.2) lib/rack/content_length.rb:14:in `call&#39;
+puma (2.7.1) lib/puma/server.rb:486:in `handle_request&#39;
+puma (2.7.1) lib/puma/server.rb:357:in `process_client&#39;
+puma (2.7.1) lib/puma/server.rb:250:in `block in run&#39;
+puma (2.7.1) lib/puma/thread_pool.rb:92:in `call&#39;
+puma (2.7.1) lib/puma/thread_pool.rb:92:in `block in spawn_thread&#39;</code></pre>
+    </div>
+</div>
+
+  
+
+<h2 style="margin-top: 30px">Request</h2>
+<p><b>Parameters</b>:</p> <pre>{&quot;user&quot;=&gt;{&quot;email&quot;=&gt;&quot;vasya100500@lol.ru&quot;,
+ &quot;password&quot;=&gt;&quot;[FILTERED]&quot;},
+ &quot;format&quot;=&gt;&quot;json&quot;,
+ &quot;registration&quot;=&gt;{&quot;user&quot;=&gt;{&quot;email&quot;=&gt;&quot;vasya100500@lol.ru&quot;,
+ &quot;password&quot;=&gt;&quot;[FILTERED]&quot;}}}</pre>
+
+<div class="details">
+  <div class="summary"><a href="#" onclick="return toggleSessionDump()">Toggle session dump</a></div>
+  <div id="session_dump" style="display:none"><pre></pre></div>
+</div>
+
+<div class="details">
+  <div class="summary"><a href="#" onclick="return toggleEnvDump()">Toggle env dump</a></div>
+  <div id="env_dump" style="display:none"><pre>GATEWAY_INTERFACE: &quot;CGI/1.2&quot;
+HTTP_ACCEPT: &quot;application/json&quot;
+REMOTE_ADDR: &quot;127.0.0.1&quot;
+SERVER_NAME: &quot;localhost&quot;
+SERVER_PROTOCOL: &quot;HTTP/1.1&quot;</pre></div>
+</div>
+
+<h2 style="margin-top: 30px">Response</h2>
+<p><b>Headers</b>:</p> <pre>None</pre>
+
+</div>
+
+
+</body>
+</html>
