@@ -33,14 +33,10 @@ Virtualacademy::Application.routes.draw do
   #     end
   #   end
   
-  devise_scope :user do
-    resources :users, only: [:show, :index] do
       resources :reviews
       resources :courses
       resources :lessons
       resources :tasks
-    end
-  end
 
   # Example resource route with sub-resources:
   #   resources :products do

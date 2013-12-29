@@ -38,6 +38,16 @@ Virtual Academy Project
 
 ## REST API:
 Use Rakefile to test API with curl:
+* Type  
+  ```
+  rake api:index[resource]
+  ```  
+  to list all of resource items
+* Type  
+  ```
+  rake api:show[resource,index]
+  ```  
+  to one resource item by index
 
 ## More info:
 ?????

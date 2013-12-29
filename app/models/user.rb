@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :trackable, :validatable, :omniauthable, :token_authenticatable
+  devise :database_authenticatable, :registerable, :recoverable, :trackable, :validatable, :omniauthable
 
   # Here comes validations
   validates :nickname, presence: true, format: {with: /\A[a-z0-9\-_\.]*\z/, message: 'only downcase letters, numbers, dots and underscores allowed'}
