@@ -33,12 +33,7 @@ gem 'redis-store'
 gem 'acts-as-taggable-on'
 
 group :development do
-  gem 'guard-livereload'
-  gem 'guard-zeus'
   gem 'capistrano'
-  gem 'rb-inotify'
-  gem 'awesome_print'
-  gem 'colored'
 end
 
 # JSON engine
