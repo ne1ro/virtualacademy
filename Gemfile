@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.0.beta1'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -34,10 +34,8 @@ gem 'acts-as-taggable-on'
 
 group :development do
   gem 'capistrano'
+  gem 'spring'
 end
-
-# JSON engine
-gem 'yajl-ruby'
 
 # Realtime websockets
 gem 'faye'
