@@ -37,20 +37,10 @@ Virtual Academy Project
 ![BDD](http://www.agilebuddha.com/wp-content/uploads/2013/08/Behavior-Driven-DevelopmentBDD-2.png)  
 
 ## REST API:
-Use Rakefile to test API with curl:
-* Type  
-  ```
-  rake api:index[resource]
-  ```  
-  to list all of resource items
-* Type  
-  ```
-  rake api:show[resource,index]
-  ```  
-  to one resource item by index
+Use CURL to test API
 
 ## More info:
 ?????
 PROFIT!
 
-Created by Alexey Kuznetsov
+Created by Alexey Kuznetsov and Alexander Ivanin (c) 2013-2014
