@@ -17,17 +17,11 @@ end
 # Use puma as the app server
 gem 'puma'
 
-# REST API versioning
-gem 'versioncake'
-
 # OmniAuth
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-vkontakte'
-
-# Redis storage
-gem 'redis-store'
 
 # Tags for blog records
 gem 'acts-as-taggable-on'
@@ -36,12 +30,6 @@ group :development do
   gem 'capistrano'
   gem 'spring'
 end
-
-# Realtime websockets
-gem 'faye'
-
-# Curl bindings
-gem 'curb'
 
 # Authentication
 gem 'devise'
