@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 require 'multi_json'
 require 'rails/all'
+Bundler.require
 
 module Virtualacademy
   class Application < Rails::Application
